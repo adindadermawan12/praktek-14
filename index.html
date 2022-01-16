@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <title>Show Hide</title>
+        <style>
+            .kotak{height: 500px; margin: 10px;}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h3>Belajar jQuery Show Hide Effect</h3>
+            <button type="button" class="btn btn-primary" id="TPilih1">Pilih 1</button>
+            <button type="button" class="btn btn-primary" id="TPilih2">Pilih 2</button>
+            <select id="SPilih">
+                <option >Pilihan</option>
+                <option value="A">Pilih 1</option>
+                <option value="B">Pilih 2</option>
+
+            </select>
+        </div>
+        <div class="container">
+            <div class="Pilih1">
+                <div class="card">
+                    <div class="card-content kotak">
+                        <h3>Hitung Luas dan Keliling Persegi Panjang</h3>
+                        <form>
+                            <label for="pj">Nilai Panjang</label>
+                            <input type="number" id="PJ" class="form-control">
+                            <label for="lb">Nilai Lebar</label>
+                            <input type="number" id="LB" class="form-control">
+                            <label for="luas">Luasnya</label>
+                            <input type="number" id="LUAS" class="form-control" disabled>
+                            <label for="keliling">Kelilingnya</label>
+                            <input type="number" id="KLL" class="form-control" disabled>
+                            <br>
+                            <button type="button" id="HPP" class="btn btn-primary">Hitung Luas dan Keliling</button>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="Pilih2">
+                <div class="card">
+                    <div class="card-content kotak">
+                        <h3>Hitung Luas dan Keliling Segitiga</h3>
+                        <form>
+                            <label for="alas">Nilai Alas</label>
+                            <input type="number" id="Alas" class="form-control">
+                            <label for="tg">Nilai Tinggi</label>
+                            <input type="number" id="TG" class="form-control">
+                            <label for="ss">Nilai Sisinya</label>
+                            <input type="number" id="SS" class="form-control">
+                            <label for="luas1">Luasnya</label>
+                            <input type="number" id="LUAS1" class="form-control" disabled>
+                            <label for="keliling1">Kelilingnya</label>
+                            <input type="number" id="KLL1" class="form-control" disabled>
+                            <br>
+                            <button type="button" id="HSG" class="btn btn-primary">Hitung Luas dan Keliling</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".Pilih1").hide();
+            $(".Pilih2").hide();
+
+            $("#TPilih1").click(function(){
+                $(".Pilih1").show(1000);
+                $(".Pilih2").hide(500);
+            });
+
+            $("#TPilih2").click(function(){
+                $(".Pilih2").show(1000);
+                $(".Pilih1").hide(500);
+            });
+
+            $("#SPilih").change(function(){
+                var npilih = $("#SPilih").val();
+                switch (npilih) {
+                    case "A":
+                        $(".Pilih1").show(1000);
+                        $(".Pilih2").hide(500);
+                        break;
+                    case "B":
+                        $(".Pilih2").show(1000);
+                        $(".Pilih1").hide(500);
+                        break;
+                    default:
+                        $(".Pilih1").hide(500);
+                        $(".Pilih2").hide(500);
+                        break;
+                }
+            });
+
+            $("#HPP").click(function(){
+                var pj = $("#PJ").val();
+                var lb = $("#LB").val();
+                var luas = pj*lb;
+                $("#LUAS").val(luas);
+                var kell = 2*(parseFloat(pj)+ parseFloat(lb));
+                $("#KLL").val(kell);
+            });
+
+            $("#HSG").click(function(){
+                var alas = $("#Alas").val();
+                var tg = $("#TG").val();
+                var ss = $("#SS").val()
+                var luas1 = 0.5*alas*tg;
+                $("#LUAS1").val(luas1);
+                var kell1 = 3*ss;
+                $("#KLL1").val(kell1);
+            });
+
+        });
+        
+    </script>
+</html>
